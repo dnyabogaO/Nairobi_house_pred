@@ -1,0 +1,93 @@
+{% extends 'msgapp/base.html' %}
+{% block content %}
+<div class="container" style=" max-width:3000px;background:#92bde7">
+    <div style="box-sizing:border-box;">
+        <h4 style="text-align:center;color:green;margin-top:0;margin-bottom:1em;margin:0 0 1rem 0;">
+                    Cervical Cancer Screening Data Entry Form</h4>
+        <div class="col-sm-6 mx-auto" style="margin-top: 10px; ">
+            <form class="row" action="{% url 'msgapp:cervicalscreening' %}" method="post" style="display:grid;
+                     grid-template-columns:1fr 1fr;grid-gap:0.5px;  background:#f8f9f6;box-shadow:0 0 20px 0 rgba(72,94,116,0.7);color:#485e74;">
+                {% csrf_token %}
+
+
+                <div class="form-group" >
+                    <label for="example-email-input" class="col-2 col-form-label"><b style="color:steelblue;">Person_id</b></label>
+                    <div class="col-10">
+                        <input name="person_id" class="form-control" type="number" style="background: #faf6d9;border: 2px solid steelblue;">
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label style="margin-left:1em;margin-top:1em;" name="type_of_abnormality"  for="example-email-input">
+                        <b style="color:steelblue;">Encounter_type</b></label>
+                    <select class="form-inline col-9" name="encounter_type" style="display: block;margin-bottom: 0px;
+                                background: #faf6d9; margin-left:1em; padding:0.2em; border: 2px solid steelblue;">
+                        <option selected>Choose here</option>
+                        <option value="cervical cancer screening">cervical cancer screening</option>
+                        <option value="other">other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="encounter_datetime" class="col-2 col-form-label">
+                        <b style="color:steelblue;">Encounter_datetime</b></label>
+                    <div class="col-10">
+                        <input name="encounter_datetime" class="form-control" type="date" id="encounter_datetime"
+                               style="background: #faf6d9; border: 2px solid steelblue; ">
+                    </div>
+                </div>
+                <div class="form-group" >
+                    <label style="margin-left:1em;"  name="location" for="example-email-input">
+                        <b style="color:steelblue;">Location</b></label>
+                    <select class="form-inline col-9" name="location"
+                            style="background: #faf6d9;margin-left:1em; padding:0.2em;border: 2px solid steelblue;">
+                        <option selected>Choose Location here</option>
+                        <option value="Mtrh">Mtrh</option>
+                        <option value="Kitale">Kitale</option>
+                        <option value="Burnt Forest">Burnt Forest</option>
+                        <option value="Eldoret">Eldoret</option>
+                        <option value="Churaimbo">Churaimbo</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="example-email-input" class="col-2 col-form-label form-inline"><b style="color:steelblue;">First_Name</b></label>
+                    <div class="col-10 " >
+                        <input name="fname" class="form-control" type="text" style="background: #faf6d9; border: 2px solid steelblue;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="example-email-input" class="col-2 col-form-label"><b style="color:steelblue;">Last_Name</b></label>
+                    <div class="col-10">
+                        <input name="lname" class="form-control" type="text" style="background: #faf6d9; border: 2px solid steelblue;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="example-email-input" class="col-2 col-form-label"><b style="color:steelblue;">Age</b></label>
+                    <div class="col-10 ">
+                        <input name="age" class="form-control" type="number" style="background: #faf6d9;border: 2px solid steelblue;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label  for="example-email-input" class="col-2 col-form-label"><b style="color:steelblue;">Phone_number</b></label>
+                    <div class="col-10">
+                        <input name="contact" class="form-control" type="text" style="background: #faf6d9;border: 2px solid steelblue;">
+                    </div>
+                </div>
+                <div class="form-group" >
+                    <label style="margin-left:1em;"  name="type_of_abnormality" for="example-email-input">
+                        <b style="color:steelblue;">Type_of_abnormality</b></label>
+                    <select class="form-inline col-9" name="type_of_abnormality" style="background: #faf6d9;margin-left:1em; padding:0.2em;border: 2px solid steelblue;">
+                        <option selected>Choose here</option>
+                        <option value="breast lumps">breast lumps</option>
+                        <option value="breast discharge">breast discharge</option>
+                        <option value="dense nodularity">dense nodularity</option>
+                    </select>
+                </div>
+                <div class="full" style="padding:3em;margin-top:3em;">
+                    <button  type="submit" class="btn btn-primary col-12">Submit Data</button>
+
+                 </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

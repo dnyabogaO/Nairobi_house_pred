@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Phone Price Prediction in Kenya</title>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='ipl-favicon.ico') }}">
+        <link rel="stylesheet" href="../static/styles.css">
+        <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <!-- Website Title -->
+    	<div class="container">
+            <h2 class='container-heading'><span class='heading_first'>Phone Price Prediction for </span><span class="heading_second">Various Phone Models In Kenya</span></h2>
+            <div class='description'>
+    			<p>A Machine Learning Web App, Built with Flask, Deployed using Heroku.</p>
+    		</div>
+    	</div>
+
+
+            <!-- Prediction Form -->
+            <div class='div2'>
+                <form action="{{ url_for('predict') }}" method="POST">
+                    <!-- Batting Team Dropdown -->
+                    <select class="form-input align-center" name="phone_make">
+                        <option value="none">--- Select a Phone Name ---</option>
+                        <option value="Samsung">Samsung</option>
+                        <option value="Xiaomi">Xiaomi</option>
+                        <option value="Huawei">Huawei</option>
+                        <option value="Infinix">Infinix</option>
+                        <option value="Tecno">Tecno</option>
+                        <option value="Oppo">Oppo</option>
+                        <option value="Realme">Realme</option>
+                        <option value="Nokia">Nokia</option>
+                        <option value="HTC">HTC</option>
+                        <option value="Apple">Apple</option>
+                        <option value="Sony">Sony</option>
+                        <option value="OnePlus">OnePlus</option>
+                        <option value="LG">LG</option>
+                        <option value="Lenovo">Lenovo</option>
+                        <option value="Google">Google</option>
+                        <option value="BlackBerry">BlackBerry</option>
+                        <option value="Motorola">Motorola</option>
+                    </select><br>
+                    <!-- Bowling Team Dropdown -->
+                    <select class="form-input align-center" name="OS">
+                        <option value="none">--- Select an Operating System ---</option>
+                        <option value="Android">Android</option>
+                        <option value="iOS">iOS</option>
+                    </select><br>
+                    <input class="form-input" type="text" name="ROM" placeholder="ROM eg. 16"><br>
+                    <input class="form-input" type="text" name="RAM" placeholder="RAM eg. 8"><br>
+                    <input class="form-input" type="text" name="screen_size" placeholder="Screen size eg. 6"><br>
+                    <input class="form-input" type="text" name="back_camera" placeholder="Back camera specs eg. 1000000"><br>
+                    <input class="form-input" type="text" name="front_camera" placeholder="Front camera specs eg. 20.0"><br>
+                    <input class="form-input" type="text" name="Battery" placeholder="Battery ratings eg. 6000"><br>
+                    <input class="form-input" type="text" name="Rating" placeholder="Phone Rating eg. 5.0"><br>
+                    <input class="form-input" type="text" name="Likes" placeholder="Phone Likes eg. 30"><br>
+                    <input class="form-input" type="text" name="specs_score" placeholder="Phone specs score eg. 50"><br>
+
+			<!---<input type="submit" class="myButton" value="Predict Score">-->
+             <input type="submit" class="myButton" onclick="onClickedEstimatePrice()" value="Predict Price">
+	        <div id="uiEstimatedPrice" class="result">	<h2></h2> </div>
+                     <!-- Footer -->
+
+        	</form>
+            </div>
+    <style>
+
+{
+    box-sizing:border-box;
+}
+
+body{
+	font-family: Arial, Helvetica, sans-serif;
+	height: 100%;
+	margin: 0;
+	background-color: #92bde7;
+	color:#485e74;
+	line-height:1.6;
+}
+
+/* Website Title */
+.container{
+	color: #000000;
+    padding: 20px;
+	display: block;
+	text-align: center;
+}
+
+.container-heading{
+    margin: 0;
+}
+
+.heading_first{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 100;
+}
+
+.heading_second{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 800;
+	font-style: italic;
+}
+
+.description p{
+    font-style: italic;
+    font-size: 12px;
+	font-weight: 100;
+    margin: 0;
+}
+
+/* Prediction Area */
+.prediction-area{
+	position: relative;
+	display: flex;
+	justify-content: space-evenly;
+	padding: 20px 40px;
+}
+
+.div2 {
+	display: inline-block;
+	width: auto;
+	height: 429px;
+	text-align: center;
+
+}
+
+/* Form */
+.form{
+    display:flex;
+	flex-direction: row;
+	display: inline-block;
+	}
+
+.form-input{
+	background-color: #E9E9E9;
+
+	width: 300px;
+	height: 30px;
+	border-radius: 3px;
+	border: 5;
+	text-align: center;
+	-webkit-box-shadow: inset 7px 3px 16px -10px rgba(0,0,0,0.75);
+	-moz-box-shadow: inset 7px 3px 16px -10px rgba(0,0,0,0.75);
+	box-shadow: inset 7px 3px 16px -10px rgba(0,0,0,0.75);
+	margin-bottom: 10px;
+	border: 2px solid steelblue;
+	background: #faf6d9;
+	margin-bottom: 10px;
+
+	margin-left: 200%;
+
+}
+
+/* Predict Button */
+.myButton {
+	background-color:#0c0c0c;
+	border-radius: 5px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:7px 30px;
+	margin-top: 10px;
+	text-decoration:none;
+	transition: 0.5s ease-out;
+	margin-left: 230%;
+
+}
+
+
+    </style>
+
+    </body>
+</html>

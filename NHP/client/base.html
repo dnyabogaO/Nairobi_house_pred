@@ -1,0 +1,258 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <link rel="stylesheet" href="../client/style.css">
+    <title>Oncology Dashboard</title>
+</head>
+<body>
+
+<div class="container" style=" max-width:3000px;background:#92bde7">
+    <div style="box-sizing:border-box;">
+        <h4 style="text-align:center;color:green;margin-top:0;margin-bottom:1em;margin:0 0 1rem 0;">
+                    Breast Cancer Screening Data Entry Form</h4>
+        <div class="col-sm-6 mx-auto" style="margin-top: 10px; ">
+            <form class="row" action="{% url 'msgapp:breastscreening' %}" method="post" style="display:grid;
+                     grid-template-columns:1fr 1fr;grid-gap:0.5px;  background:#f8f9f6;box-shadow:0 0 20px 0 rgba(72,94,116,0.7);color:#485e74;">
+                {% csrf_token %}
+
+
+                <div class="form-group" >
+                    <label for="example-email-input" class="col-2 col-form-label"><b style="color:steelblue;">Person_id</b></label>
+                    <div class="col-10">
+                        <input name="person_id" class="form-control" type="number" style="background: #faf6d9;border: 2px solid steelblue;">
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label style="margin-left:1em;margin-top:1em;" name="type_of_abnormality"  for="example-email-input">
+                        <b style="color:steelblue;">Encounter_type</b></label>
+                    <select class="form-inline col-9" name="encounter_type" style="display: block;margin-bottom: 0px;
+                                background: #faf6d9; margin-left:1em; padding:0.2em; border: 2px solid steelblue;">
+                        <option selected>Choose here</option>
+                        <option value="breast cancer screening">breast cancer screening</option>
+                        <option value="other">other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="encounter_datetime" class="col-2 col-form-label">
+                        <b style="color:steelblue;">Encounter_datetime</b></label>
+                    <div class="col-10">
+                        <input name="encounter_datetime" class="form-control" type="date" id="encounter_datetime"
+                               style="background: #faf6d9; border: 2px solid steelblue; ">
+                    </div>
+                </div>
+                <div class="form-group" >
+                    <label style="margin-left:1em;"  name="location" for="example-email-input">
+                        <b style="color:steelblue;">Location</b></label>
+                    <select class="form-inline col-9" name="location"
+                            style="background: #faf6d9;margin-left:1em; padding:0.2em;border: 2px solid steelblue;">
+                        <option selected>Choose Location here</option>
+                        <option value="Mtrh">Mtrh</option>
+                        <option value="Kitale">Kitale</option>
+                        <option value="Burnt Forest">Burnt Forest</option>
+                        <option value="Eldoret">Eldoret</option>
+                        <option value="Churaimbo">Churaimbo</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="example-email-input" class="col-2 col-form-label form-inline">
+                        <b style="color:steelblue;">First_Name</b></label>
+                    <div class="col-10 " >
+                        <input name="fname" class="form-control" type="text" style="background: #faf6d9; border: 2px solid steelblue;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="example-email-input" class="col-2 col-form-label"><b style="color:steelblue;">Last_Name</b></label>
+                    <div class="col-10">
+                        <input name="lname" class="form-control" type="text" style="background: #faf6d9; border: 2px solid steelblue;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label  for="Gender" class="col-2 col-form-label" name="gender"><b style="color:steelblue;">Gender</b></label>
+                    <div style="margin-left:1em; font-weight: bold; font-size: 15px;color:steelblue;">
+                        <input type="radio" id="male" name="gender" value="male"><label for="male">Male</label>
+                        <input type="radio" id="female" name="gender" value="female"><label for="female">Female</label>
+                        <input type="radio" id="other" name="gender" value="Other" checked><label
+                            for="other">Other</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="example-email-input" class="col-2 col-form-label"><b style="color:steelblue;">Age</b></label>
+                    <div class="col-10 ">
+                        <input name="age" class="form-control" type="number" style="background: #faf6d9;border: 2px solid steelblue;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label  for="example-email-input" class="col-2 col-form-label"><b style="color:steelblue;">Phone_Number</b></label>
+                    <div class="col-10">
+                        <input name="contact" class="form-control" type="text" style="background: #faf6d9;border: 2px solid steelblue;">
+                    </div>
+                </div>
+                <div class="form-group" >
+                    <label style="margin-left:1em;"  name="type_of_abnormality" for="example-email-input">
+                        <b style="color:steelblue;">Type_of_abnormality</b></label>
+                    <select class="form-inline col-9" name="type_of_abnormality" style="background: #faf6d9;margin-left:1em; padding:0.2em;border: 2px solid steelblue;">
+                        <option selected>Choose here</option>
+                        <option value="breast lumps">breast lumps</option>
+                        <option value="breast discharge">breast discharge</option>
+                        <option value="dense nodularity">dense nodularity</option>
+                    </select>
+                </div>
+
+                <div class="full">
+                    <button   type="submit" class="btn btn-primary col-12"
+                         style="margin-bottom:2em;padding:0.3em;margin-left:13em;">
+                        Submit Data</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    background:#92bde7;
+    color:#485e74;
+    line-height:1.6;
+    font-family:'segoe UI', Tahoma, Geneva, Verdana, sans-Serif;
+    padding:1em;
+}
+
+.container{
+    max-width:1170px;
+    margin-left:auto;
+    margin-right:auto;
+    padding:1em;
+}
+
+ul{
+    list-style:none;
+    padding:0;
+}
+
+.brand{
+    text-align:center;
+}
+.brand span{
+    color:#fff;
+}
+
+.wrapper{
+    box-shadow:0 0 20px 0 rgba(72,94,116,0.7);
+}
+
+.wrapper > *{
+    padding:1em;
+}
+
+.company-info{
+    background:#c9e6ff;
+}
+
+.company-info h3, .company-info ul{
+    text-align:center;
+    margin:0 0 1rem 0;
+}
+
+.contact{
+    background:#f9feff;
+}
+
+/*forms */
+.contact form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-gap:20px;
+}
+
+.contact form label{
+    display:block;
+}
+
+.contact form p{
+    margin:0;
+}
+
+.contact form .full{
+    grid-column:1/3;
+}
+
+.contact form button, .contact form input, .contact form textarea{
+    width:100%;
+    padding:1em;
+    border: 2px solid steelblue;
+	background: #faf6d9;
+}
+
+.contact form button{
+    background:#c9e6ff;
+    border:0;
+    text-transform:uppercase;
+}
+
+.contact form button:hover, .contact form button focus{
+    background:9292bde7;
+    color:#fff;
+    outline:0;
+    transition:background-color 2s ease-out;
+}
+select[name="gender"]{
+	display: block;
+	margin-bottom: 25px;
+	width: 100%;
+	height: 45px;
+	border: 2px solid steelblue;
+	background: #faf6d9;
+}
+
+select[name="results"]{
+	display: block;
+	margin-bottom: 25px;
+	width: 100%;
+	height: 45px;
+	border: 2px solid steelblue;
+	background: #faf6d9;
+}
+
+/*Large screens*/
+
+@media(min-width:700px){
+    .wrapper{
+        display:grid;
+        grid-template-columns:1fr 2fr;
+    }
+
+    .wrapper > *{
+        padding:2em;
+    }
+
+    .company-info h3, .company-info ul{
+        text-align:left;
+    }
+}
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
